@@ -1,0 +1,3 @@
+# This is an exmaple file.  Put it in your ~/.limelight.yaml file.
+clubhouse-token: <token>
+clubhouse-query: "due:tomorrow, label:PriorityA, owner:mattkonda" 
