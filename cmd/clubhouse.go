@@ -30,12 +30,18 @@ type Label struct {
 	Name string `json:"name"`
 }
 
+// Story Change struct
+type StoryChange struct {
+	Label    CreateLabelParams `json:"labels"`
+	NewState int               `json:"workflow_state_id"`
+}
+
 // Story structure
 type Story struct {
+	ID              int     `json:"id"`
 	Name            string  `json:"name"`
 	Description     string  `json:"description"`
 	Deadline        string  `json:"deadline"`
-	ID              int     `json:"id"`
 	Labels          []Label `json:"labels`
 	URL             string  `json:"app_url"`
 	ProjectID       int     `json:"project_id"`
@@ -59,9 +65,38 @@ type Epic struct {
 	Name string `json:"name"`
 }
 
-// Epic struct
-// https://api.clubhouse.io/api/v3/epics/{epic-public-id}
-type State struct {
+// Create Label Parameters
+type CreateLabelParams struct {
+	Name        string `json:"name"`
+	Color       string `json:"color"`
+	Description string `json:"description"`
+}
+
+// These are probably specific to our project.  We're not using them yet, but
+// you might want to look at the states command to dump them.
+
+// Kanban
+const UnstartedKanbanState int = 500000027
+const StartedKanbanState int = 500000026
+const DoneKanbanState int = 500000028
+
+// Engineering
+const UnscheduledEngineeringState int = 500000008
+const ReadyForDevelopmentState int = 500000007
+const ReadyForReviewEngineeringState int = 500000010
+const ReadyForDeployEngineeringState int = 500000009
+const CompletedEngineeringState int = 500000011
+
+// Workflow
+type Workflow struct {
+	ID     int             `json:"id"`
+	Name   string          `json:"name"`
+	States []WorkflowState `json:"states"`
+}
+
+// WorkflowState
+type WorkflowState struct {
+	ID   int    `json:"id"`
 	Name string `json:"name"`
 }
 

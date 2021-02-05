@@ -23,7 +23,7 @@ var storiesCmd = &cobra.Command{
 	Long:  `Pull story information out of Clubhouse.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		clubhousetoken := viper.GetString("clubhouse-token")
-		q := viper.GetString("clubhouse-query")
+		q := viper.GetString("stories-query")
 		query := Query{25, q}
 		jsonQuery, _ := json.Marshal(query)
 		client := &http.Client{}
@@ -49,13 +49,13 @@ var storiesCmd = &cobra.Command{
 		for i := 0; i < len(stories); i++ {
 			fmt.Printf("Project: %v\tEpic: %v\tStory: %v\tDue: %v\tID: %v\tState: %v\tLabels: %v\tURL: %v\n", getProject(stories[i].ProjectID).Name,
 				getEpic(stories[i].EpicID).Name, stories[i].Name, stories[i].Deadline,
-				stories[i].ID, stories[i].State, stories[i].Labels, stories[i].URL)
+				stories[i].ID, stories[i].WorkflowStateID, stories[i].Labels, stories[i].URL)
 		}
 	},
 }
 
 func init() {
 	clubhouseCmd.AddCommand(storiesCmd)
-	storiesCmd.Flags().String("clubhouse-query", "", "The story query to run.")
-	viper.BindPFlag("clubhouse-query", storiesCmd.Flags().Lookup("clubhouse-query"))
+	storiesCmd.Flags().String("stories-query", "", "The story query to run.")
+	viper.BindPFlag("stories-query", storiesCmd.Flags().Lookup("stories-query"))
 }
