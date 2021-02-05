@@ -1,6 +1,7 @@
 # Limelight
 
-Inspired by a club I used to go to back in the good old days,
+Inspired by [a club](https://patch.com/new-york/new-york-city/limelight-stunning-photos-1990s-favorite-nyc-nightclub) 
+I used to go to back in the good old days,
 this tool is a quick interface to Clubhouse.
 
 In particular, I want to be able to use Clubhouse UI for 
