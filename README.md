@@ -12,7 +12,16 @@ done like todo.sh.
 
 You need to get the program either from releases or using go get.
 
-You need to get an API key from Clubhouse.
+Suppose you are developing with it, you might want to do this:
+
+```
+git clone github.com/mkonda/limelight.git
+cd limelight
+go build
+go install
+```
+
+You need to get an API key from Clubhouse in your settings [here](https://app.clubhouse.io/settings/account/api-tokens).
 
 You can then specify that with `--clubhouse-token xyz` at the command line,
 or put it in your `~/.limelight.yaml` file.  See `limelight.yaml.example` in
@@ -20,18 +29,22 @@ the project root for the format.
 
 ## Running
 
+If you are running while tweaking, you'll want to run `go run limelight.go clubhouse <action>`.  If you did the go install,
+you can also do `limelight clubhouse stories`.
+
 Running simple search on stories.
 
-`go run limelight.go clubhouse stories`
+`limelight clubhouse stories`
 
 You can also supply a query in `--stories-query`.  If it works here: 
 `https://app.clubhouse.io/<your-org>/search` it should work with limelight.
 
-Some examples:
+Some examples with tailored queries to `limelight clubhouse stories`:
 
+* `--stories-query "epic:\"Epic Name\""` Pull stories from an Epic
 * `--stories-query "state:500000027 -is:archived"` Kanban state open and not archved
 * `--stories-query "due:2021-01-01..2021-02-05 owner:mattkonda -is:archived"` Owned by Matt, not archived, due in a date range.
-* `go run limelight.go clubhouse stories --stories-query "due:2021-01-01..2021-02-05 owner:mattkonda -is:archived label:PriorityA"` with label!
+* `--stories-query "due:2021-01-01..2021-02-05 owner:mattkonda -is:archived label:PriorityA"` with label!
 
 ## Knowing Your States
 
@@ -40,8 +53,6 @@ Some of the specific states can be really handy to manipulate by hand.  But we n
 `limelight clubhouse states`
 
 ```
-mkonda@jazz limelight % go run limelight.go clubhouse states                                                                           
-
 Workflow: Feature Requests
 Workflow State:         Name: Backlog   ID: 500000016
 Workflow State:         Name: To be Prioritized ID: 500000015
@@ -72,7 +83,7 @@ Workflow State:         Name: Done      ID: 500000253
 
 The following illustrate the two ways that we can currently update stories.
 
-* `go run limelight.go clubhouse story 1316 --story-label PriorityA` - Add a label to an existing story.
-* `go run limelight.go clubhouse story 885 --story-state 500000028` - Change a story stage.
+* `limelight clubhouse story 1316 --story-label PriorityA` - Add a label to an existing story.
+* `limelight clubhouse story 885 --story-state 500000028` - Change a story stage.
 
 For now, this is enough to get me to GTD™ from the CLI with Clubhouse as the back end.
