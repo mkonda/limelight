@@ -1,10 +1,10 @@
 # Limelight
 
-Inspired by [a club](https://patch.com/new-york/new-york-city/limelight-stunning-photos-1990s-favorite-nyc-nightclub) 
-I used to go to back in the good old days,
-this tool is a quick interface to Clubhouse.
+Inspired by [a club](https://en.wikipedia.org/wiki/The_Limelight#New_York_City_location)
+I used to go to back in the good old days, this tool is a quick interface to Shortcut,
+which was formerly known as Clubhouse.
 
-In particular, I want to be able to use Clubhouse UI for 
+In particular, I want to be able to use Shortcut UI for
 high level planning but I want to be able to use a CLI
 that let's me stay plugged in and focus on getting things
 done like todo.sh.
@@ -15,32 +15,31 @@ You need to get the program either from releases or using go get.
 
 Suppose you are developing with it, you might want to do this:
 
-```
+```sh
 git clone github.com/mkonda/limelight.git
 cd limelight
 go build
 go install
 ```
 
-You need to get an API key from Clubhouse in your settings [here](https://app.clubhouse.io/settings/account/api-tokens).
+You need to get an API key from Shortcut in your settings [here](https://app.shortcut.com/settings/account/api-tokens).
 
-You can then specify that with `--clubhouse-token xyz` at the command line,
+You can then specify that with `--shortcut-token xyz` at the command line,
 or put it in your `~/.limelight.yaml` file.  See `limelight.yaml.example` in
 the project root for the format.
 
 ## Running
 
-If you are running while tweaking, you'll want to run `go run limelight.go clubhouse <action>`.  If you did the go install,
-you can also do `limelight clubhouse stories`.
+If you are running while tweaking, you'll want to run `go run limelight.go shortcut <action>`.  If you did the go install, you can also do `limelight shortcut stories`.
 
 Running simple search on stories.
 
-`limelight clubhouse stories`
+`limelight shortcut stories`
 
-You can also supply a query in `--stories-query`.  If it works here: 
-`https://app.clubhouse.io/<your-org>/search` it should work with limelight.
+You can also supply a query in `--stories-query`.  If it works here:
+`https://app.shortcut.com/<your-org>/search` it should work with limelight.
 
-Some examples with tailored queries to `limelight clubhouse stories`:
+Some examples with tailored queries to `limelight shortcut stories`:
 
 * `--stories-query "epic:\"Epic Name\""` Pull stories from an Epic
 * `--stories-query "state:500000027 -is:archived"` Kanban state open and not archved
@@ -51,9 +50,9 @@ Some examples with tailored queries to `limelight clubhouse stories`:
 
 Some of the specific states can be really handy to manipulate by hand.  But we need to know the ids for this.
 
-`limelight clubhouse states`
+`limelight shortcut states`
 
-```
+```txt
 Workflow: Feature Requests
 Workflow State:         Name: Backlog   ID: 500000016
 Workflow State:         Name: To be Prioritized ID: 500000015
@@ -84,7 +83,11 @@ Workflow State:         Name: Done      ID: 500000253
 
 The following illustrate the two ways that we can currently update stories.
 
-* `limelight clubhouse story 1316 --story-label PriorityA` - Add a label to an existing story.
-* `limelight clubhouse story 885 --story-state 500000028` - Change a story stage.
+* `limelight shortcut story 1316 --story-label PriorityA` - Add a label to an existing story.
+* `limelight shortcut story 885 --story-state 500000028` - Change a story stage.
 
 For now, this is enough to get me to GTD™ from the CLI with Clubhouse as the back end.
+
+## References
+
+* [Shortcut API](https://developer.shortcut.com/api/rest/v3)

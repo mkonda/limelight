@@ -19,8 +19,8 @@ var debug bool
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "limelight",
-	Short: "limelight helps us to interact with Clubhouse the way we want",
-	Long:  `limelight helps us to interact with Clubhouse the way we want `,
+	Short: "limelight helps us to interact with Shortcut the way we want",
+	Long:  `limelight helps us to interact with Shortcut the way we want `,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

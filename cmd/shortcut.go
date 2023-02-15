@@ -13,7 +13,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-// Query to send to clubhouse
+// Query to send to shortcut
 type Query struct {
 	PageSize int    `json:"page_size"`
 	Query    string `json:"query"`
@@ -54,12 +54,14 @@ type Story struct {
 }
 
 // Project struct
+// TODO: Update
 // https://api.clubhouse.io/api/v3/projects/{project-public-id}
 type Project struct {
 	Name string `json:"name"`
 }
 
 // Epic struct
+// TODO: Update
 // https://api.clubhouse.io/api/v3/epics/{epic-public-id}
 type Epic struct {
 	Name string `json:"name"`
@@ -101,26 +103,26 @@ type WorkflowState struct {
 }
 
 // storiesCmd represents the github command
-var clubhouseCmd = &cobra.Command{
-	Use:   "clubhouse",
-	Short: "Connect to clubhouse and do something",
-	Long:  `Connect to clubhouse and do something.  (See subcommands)`,
+var shortcutCmd = &cobra.Command{
+	Use:   "shortcut",
+	Short: "Connect to shortcut and do something",
+	Long:  `Connect to shortcut and do something.  (See subcommands)`,
 }
 
 func init() {
-	rootCmd.AddCommand(clubhouseCmd)
+	rootCmd.AddCommand(shortcutCmd)
 
-	clubhouseCmd.Flags().String("clubhouse-token", "", "The token to connect with.")
-	viper.BindPFlag("clubhouse-token", clubhouseCmd.Flags().Lookup("clubhouse-token"))
+	shortcutCmd.Flags().String("shortcut-token", "", "The token to connect with.")
+	viper.BindPFlag("shortcut-token", shortcutCmd.Flags().Lookup("shortcut-token"))
 
 }
 
 func getEpic(ID int) Epic {
-	clubhousetoken := viper.GetString("clubhouse-token")
-	epicAPI := "https://api.clubhouse.io/api/v3/epics/" + strconv.Itoa(ID)
+	shortcuttoken := viper.GetString("shortcut-token")
+	epicAPI := "https://api.app.shortcut.com/api/v3/epics/" + strconv.Itoa(ID)
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", epicAPI, nil)
-	req.Header.Set("Clubhouse-Token", clubhousetoken)
+	req.Header.Set("Shortcut-Token", shortcuttoken)
 	req.Header.Set("Content-Type", "application/json")
 	res, err := client.Do(req)
 	if err != nil {
@@ -142,7 +144,7 @@ func getEpic(ID int) Epic {
 
 func getProject(ID int) Project {
 	clubhousetoken := viper.GetString("clubhouse-token")
-	projectAPI := "https://api.clubhouse.io/api/v3/projects/" + strconv.Itoa(ID)
+	projectAPI := "https://api.app.shortcut.com/api/v3/projects/" + strconv.Itoa(ID)
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", projectAPI, nil)
 	req.Header.Set("Clubhouse-Token", clubhousetoken)

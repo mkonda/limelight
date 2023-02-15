@@ -14,21 +14,21 @@ import (
 	"github.com/spf13/viper"
 )
 
-const api string = "https://api.clubhouse.io/api/v3/search/stories"
+const api string = "https://api.app.shortcut.com/api/v3/search/stories"
 
 // storiesCmd represents the github command
 var storiesCmd = &cobra.Command{
 	Use:   "stories",
-	Short: "Get stories from Clubhouse",
-	Long:  `Pull story information out of Clubhouse.`,
+	Short: "Get stories from Shortcut",
+	Long:  `Pull story information out of Shortcut.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		clubhousetoken := viper.GetString("clubhouse-token")
+		shortcuttoken := viper.GetString("shortcut-token")
 		q := viper.GetString("stories-query")
 		query := Query{25, q}
 		jsonQuery, _ := json.Marshal(query)
 		client := &http.Client{}
 		req, _ := http.NewRequest("GET", api, bytes.NewBuffer(jsonQuery))
-		req.Header.Set("Clubhouse-Token", clubhousetoken)
+		req.Header.Set("Shortcut-Token", shortcuttoken)
 		req.Header.Set("Content-Type", "application/json")
 		res, err := client.Do(req)
 		if err != nil {
@@ -55,7 +55,7 @@ var storiesCmd = &cobra.Command{
 }
 
 func init() {
-	clubhouseCmd.AddCommand(storiesCmd)
+	shortcutCmd.AddCommand(storiesCmd)
 	storiesCmd.Flags().String("stories-query", "", "The story query to run.")
 	viper.BindPFlag("stories-query", storiesCmd.Flags().Lookup("stories-query"))
 }
