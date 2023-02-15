@@ -54,15 +54,13 @@ type Story struct {
 }
 
 // Project struct
-// TODO: Update
-// https://api.clubhouse.io/api/v3/projects/{project-public-id}
+// https://api.app.shortcut.com/api/v3/projects/{project-public-id}
 type Project struct {
 	Name string `json:"name"`
 }
 
 // Epic struct
-// TODO: Update
-// https://api.clubhouse.io/api/v3/epics/{epic-public-id}
+// https://api.app.shortcut.com/api/v3/epics/{epic-public-id}
 type Epic struct {
 	Name string `json:"name"`
 }
@@ -143,11 +141,11 @@ func getEpic(ID int) Epic {
 }
 
 func getProject(ID int) Project {
-	clubhousetoken := viper.GetString("clubhouse-token")
+	shortcuttoken := viper.GetString("shortcut-token")
 	projectAPI := "https://api.app.shortcut.com/api/v3/projects/" + strconv.Itoa(ID)
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", projectAPI, nil)
-	req.Header.Set("Clubhouse-Token", clubhousetoken)
+	req.Header.Set("Shortcut-Token", shortcuttoken)
 	req.Header.Set("Content-Type", "application/json")
 	res, err := client.Do(req)
 	if err != nil {
