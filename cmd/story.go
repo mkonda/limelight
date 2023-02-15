@@ -18,11 +18,11 @@ const base_story_api string = "https://api.app.shortcut.com/api/v3/stories/"
 // storiesCmd represents the github command
 var storyCmd = &cobra.Command{
 	Use:   "story",
-	Short: "Update story in Clubhouse",
-	Long:  `Update story in Clubhouse.`,
+	Short: "Update story in Shortcut",
+	Long:  `Update story in Shortcut.`,
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		clubhousetoken := viper.GetString("clubhouse-token")
+		shortcuttoken := viper.GetString("shortcut-token")
 		storyID := args[0]
 		putAPI := base_story_api + storyID
 		storyState := viper.GetString("story-state")
@@ -40,7 +40,7 @@ var storyCmd = &cobra.Command{
 
 		client := &http.Client{}
 		req, _ := http.NewRequest(http.MethodPut, putAPI, bytes.NewBuffer([]byte(change)))
-		req.Header.Set("Clubhouse-Token", clubhousetoken)
+		req.Header.Set("Shortcut-Token", shortcuttoken)
 		req.Header.Set("Content-Type", "application/json")
 		res, err := client.Do(req)
 		if err != nil {

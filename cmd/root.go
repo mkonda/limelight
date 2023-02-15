@@ -57,7 +57,7 @@ func initConfig() {
 			os.Exit(1)
 		}
 
-		// Search config in home directory with name ".audithelper" (without extension).
+		// Search config in home directory with name ".limelight" (without extension).
 		viper.AddConfigPath(home)
 		viper.SetConfigName(".limelight")
 	}
