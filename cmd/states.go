@@ -13,18 +13,18 @@ import (
 	"github.com/spf13/viper"
 )
 
-const workflowsapi string = "https://api.clubhouse.io/api/v3/workflows"
+const workflowsapi string = "https://api.app.shortcut.com/api/v3/workflows"
 
 // statesCmd represents the github command
 var statesCmd = &cobra.Command{
 	Use:   "states",
-	Short: "Get the workflow states from Clubhouse",
-	Long:  `Pull workflow status out of Clubhouse.`,
+	Short: "Get the workflow states from Shortcut",
+	Long:  `Pull workflow status out of Shortcut.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		clubhousetoken := viper.GetString("clubhouse-token")
+		shortcuttoken := viper.GetString("shortcut-token")
 		client := &http.Client{}
 		req, _ := http.NewRequest("GET", workflowsapi, nil)
-		req.Header.Set("Clubhouse-Token", clubhousetoken)
+		req.Header.Set("Shortcut-Token", shortcuttoken)
 		req.Header.Set("Content-Type", "application/json")
 		res, err := client.Do(req)
 		if err != nil {
@@ -48,5 +48,5 @@ var statesCmd = &cobra.Command{
 }
 
 func init() {
-	clubhouseCmd.AddCommand(statesCmd)
+	shortcutCmd.AddCommand(statesCmd)
 }

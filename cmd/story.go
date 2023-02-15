@@ -13,7 +13,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-const base_story_api string = "https://api.clubhouse.io/api/v3/stories/"
+const base_story_api string = "https://api.app.shortcut.com/api/v3/stories/"
 
 // storiesCmd represents the github command
 var storyCmd = &cobra.Command{
@@ -56,7 +56,7 @@ var storyCmd = &cobra.Command{
 }
 
 func init() {
-	clubhouseCmd.AddCommand(storyCmd)
+	shortcutCmd.AddCommand(storyCmd)
 	storyCmd.Flags().String("story-state", "", "The state to set the story to.")
 	viper.BindPFlag("story-state", storyCmd.Flags().Lookup("story-state"))
 	storyCmd.Flags().String("story-label", "", "The label to add to the story.")
