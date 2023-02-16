@@ -43,7 +43,7 @@ Sometimes things move from PriorityA to PriorityB after
 a few days.
 
 *Note:  I found that using just "A", "B" and "C" caused
-issues wiht searching - so a more robust term made it
+issues with searching - so a more robust term made it
 easier to ensure I really got what I wanted.*
 
 So then in Shortcut, I look at open tasks across workflows
