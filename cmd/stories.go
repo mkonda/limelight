@@ -47,7 +47,7 @@ var storiesCmd = &cobra.Command{
 		json.Unmarshal(bodyBytes, &responseStruct)
 		stories := responseStruct.Data
 		for i := 0; i < len(stories); i++ {
-			fmt.Printf("Project: %v\tEpic: %v\tStory: %v\tDue: %v\tID: %v\tState: %v\tLabels: %v\tURL: %v\n", getProject(stories[i].ProjectID).Name,
+			fmt.Printf("Project: %v\tEpic: %v\n\tStory: %v\tDue: %v\tID: %v\tState: %v\tLabels: %v\n\tURL: %v\n", getProject(stories[i].ProjectID).Name,
 				getEpic(stories[i].EpicID).Name, stories[i].Name, stories[i].Deadline,
 				stories[i].ID, stories[i].WorkflowStateID, stories[i].Labels, stories[i].URL)
 		}
