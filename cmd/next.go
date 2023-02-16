@@ -46,7 +46,7 @@ var nextCmd = &cobra.Command{
 			if (len(stories) < 1) {
 				fmt.Printf("No Stories Found\n")
 			}else {
-				fmt.Printf("Project: %v\tEpic: %v\tStory: %v\tDue: %v\tID: %v\tState: %v\tLabels: %v\tURL: %v\n", getProject(stories[i].ProjectID).Name,
+				fmt.Printf("Project: %v\n\tEpic: %v\n\tStory: %v\n\tDue: %v\n\tID: %v\n\tState: %v\n\tLabels: %v\n\tURL: %v\n\n", getProject(stories[i].ProjectID).Name,
 				getEpic(stories[i].EpicID).Name, stories[i].Name, stories[i].Deadline,
 				stories[i].ID, stories[i].WorkflowStateID, stories[i].Labels, stories[i].URL)
 			}
