@@ -17,6 +17,10 @@ high level planning but I want to be able to use a CLI
 that let's me stay plugged in at my shell prompt and
 focus on getting the next thing done like todo.sh.
 
+[Here](PriorityABC.md) is a simple writeup of how I use all of
+this, including how I prioritize and use the search in a structured
+way to help keep track of things.
+
 ## Set Up
 
 To run `limelight` you can either:
