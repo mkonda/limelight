@@ -33,6 +33,7 @@ like this and specify your own info:
 ```yaml
 shortcut-token: abc-123
 stories-query: "due:*..tomorrow owner:you -is:archived"
+next-query: "owner:you"
 ```
 
 ### Getting a Shortcut API Key
@@ -143,6 +144,7 @@ parameter.
 ```yaml
 shortcut-token: abc-123
 stories-query: "due:*..tomorrow owner:you -is:archived"
+next-query: "owner:you"
 ```
 
 This could be any valid Shortcut search term.  So you
