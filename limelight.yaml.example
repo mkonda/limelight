@@ -1,3 +1,4 @@
 # This is an exmaple file.  Put it in your ~/.limelight.yaml file.
 shortcut-token: <token>
 shortcut-query: "due:*..tomorrow, owner:mattkonda" 
+next-query: "owner:mattkonda"

@@ -55,14 +55,17 @@ go install
 
 ## Running
 
-If you are running while tweaking, you'll want to run `go run limelight.go shortcut <action>`.  If you did the go install, you can also do `limelight shortcut stories`.
+If you are running while tweaking, you'll want to run `go run limelight.go shortcut <action>`.  If you did the go install, you can also do `limelight shortcut <action>`.
 
 Running simple search on stories.
 
 `limelight shortcut stories`
 
-You can also supply a query in `--stories-query`.  If it works here:
-`https://app.shortcut.com/<your-org>/search` it should work with limelight.
+This defaults to using the `story-query` in your `~/.limelight.yaml`.
+
+You can also supply a query in `--stories-query`.  
+
+If it works here:  `https://app.shortcut.com/<your-org>/search` it should work with limelight.
 
 ### Examples
 
@@ -76,20 +79,15 @@ Some examples with tailored queries to `limelight shortcut stories`:
 ## Knowing Your States
 
 Some of the specific states can be really handy to manipulate by hand.
-Eg. the query `--stories-query "state:50000027 -is:archived"` is looking for a specific state that exists in our workflow.  So far, it seems like the easiest way to do this is to use the actual state ID in the query.
+Eg. the query `--stories-query "state:50000027 -is:archived"` is looking for
+a specific state that exists in our workflow.  So far, it seems like the
+easiest way to do this is to use the actual state ID in the query.
 
-To do that, we need to know the ids.
+To do that, we need to know the *ids*.
 
 `limelight shortcut states`
 
 ```txt
-Workflow: Feature Requests
-Workflow State:         Name: Backlog   ID: 500000016
-Workflow State:         Name: To be Prioritized ID: 500000015
-Workflow State:         Name: Low Impact        ID: 500000014
-Workflow State:         Name: High Impact       ID: 500000013
-Workflow State:         Name: Out of Scope      ID: 500000017
-
 Workflow: Engineering
 Workflow State:         Name: Unscheduled       ID: 500000008
 Workflow State:         Name: Ready for Development     ID: 500000007
@@ -102,11 +100,7 @@ Workflow: Simple Kanban
 Workflow State:         Name: Unstarted ID: 500000027
 Workflow State:         Name: Started   ID: 500000026
 Workflow State:         Name: Done      ID: 500000028
-
-Workflow: Consulting
-Workflow State:         Name: Unstarted ID: 500000252
-Workflow State:         Name: Started   ID: 500000251
-Workflow State:         Name: Done      ID: 500000253
+...
 ```
 
 ## Updating Stories
@@ -127,7 +121,7 @@ obvious that were a foundational part of why I wanted `limelight`.
 
 You can have multiple config files and use them specifically, eg:
 
-`go run limelight.go --config ~/.tenantlimelight.yaml shortcut stories`
+`go run limelight.go --config ~/.other_company_limelight.yaml shortcut stories`
 
 I use this to be able to get at my different shortcut tasks without
 having to log in and switch tenants.  You just have to set up the correct
