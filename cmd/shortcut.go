@@ -56,6 +56,7 @@ type Story struct {
 // Project struct
 // https://api.app.shortcut.com/api/v3/projects/{project-public-id}
 type Project struct {
+	ID   int    `json:"id"`
 	Name string `json:"name"`
 }
 
@@ -109,10 +110,8 @@ var shortcutCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(shortcutCmd)
-
 	shortcutCmd.Flags().String("shortcut-token", "", "The token to connect with.")
 	viper.BindPFlag("shortcut-token", shortcutCmd.Flags().Lookup("shortcut-token"))
-
 }
 
 func getEpic(ID int) Epic {
