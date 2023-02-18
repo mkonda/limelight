@@ -1,6 +1,6 @@
 // Package cmd
 
-package cmd
+package shortcut
 
 import (
 	"encoding/json"

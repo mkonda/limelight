@@ -18,16 +18,16 @@ var cfgFile string
 var debug bool
 
 // rootCmd represents the base command when called without any subcommands
-var rootCmd = &cobra.Command{
+var RootCmd = &cobra.Command{
 	Use:   "limelight",
 	Short: "limelight helps us to interact with Shortcut the way we want",
 	Long:  `limelight helps us to interact with Shortcut the way we want `,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
-// This is called by main.main(). It only needs to happen once to the rootCmd.
+// This is called by main.main(). It only needs to happen once to the RootCmd.
 func Execute() {
-	if err := rootCmd.Execute(); err != nil {
+	if err := RootCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
@@ -35,13 +35,8 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initConfig)
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.limelight.yaml)")
-	rootCmd.PersistentFlags().BoolVar(&debug, "debug", false, "debug mode")
-}
-
-// GetRootCmd
-func GetRootCmd() *cobra.Command {
-	return rootCmd;
+	RootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.limelight.yaml)")
+	RootCmd.PersistentFlags().BoolVar(&debug, "debug", false, "debug mode")
 }
 
 // initConfig reads in config file and ENV variables if set.

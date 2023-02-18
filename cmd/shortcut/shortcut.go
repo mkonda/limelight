@@ -1,6 +1,6 @@
 // Package cmd
 
-package cmd
+package shortcut
 
 import (
 	"encoding/json"
@@ -11,6 +11,8 @@ import (
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+
+	"github.com/mkonda/limelight/cmd"
 )
 
 // Query to send to shortcut
@@ -53,16 +55,16 @@ type Story struct {
 	State       string
 }
 
+// Epic struct
+// https://api.app.shortcut.com/api/v3/epics/{epic-public-id}
+type Epic struct {
+	Name string `json:"name"`
+}
+
 // Project struct
 // https://api.app.shortcut.com/api/v3/projects/{project-public-id}
 type Project struct {
 	ID   int    `json:"id"`
-	Name string `json:"name"`
-}
-
-// Epic struct
-// https://api.app.shortcut.com/api/v3/epics/{epic-public-id}
-type Epic struct {
 	Name string `json:"name"`
 }
 
@@ -109,7 +111,7 @@ var shortcutCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(shortcutCmd)
+	cmd.RootCmd.AddCommand(shortcutCmd)
 	shortcutCmd.Flags().String("shortcut-token", "", "The token to connect with.")
 	viper.BindPFlag("shortcut-token", shortcutCmd.Flags().Lookup("shortcut-token"))
 }

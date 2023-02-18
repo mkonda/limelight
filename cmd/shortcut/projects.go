@@ -1,6 +1,6 @@
-// Package cmd
+// Package shortcut
 
-package cmd
+package shortcut
 
 import (
 	"encoding/json"
@@ -10,7 +10,7 @@ import (
 	"net/http"
 
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
+	"github.com/spf13/viper"	
 )
 
 const projectsapi string = "https://api.app.shortcut.com/api/v3/projects"
